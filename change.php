@@ -3,7 +3,7 @@
 
 
 $files = getDirContents('./');
-$translates = json_decode(file_get_contents('path to translates'),true);
+$translates = json_decode(file_get_contents($argv[1]),true);
 foreach ($files as $file) {
     $text = file_get_contents($file);
     foreach ($translates as $key=>$value) {
