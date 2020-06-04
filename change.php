@@ -7,11 +7,6 @@ $translates = json_decode(file_get_contents('path to translates'),true);
 foreach ($files as $file) {
     $text = file_get_contents($file);
     foreach ($translates as $key=>$value) {
-        //window.Vue.i18n.translate('error.many_request')
-        //_vm._s(_vm.$t('header.shop'))
-        //{{ $t('header.shop')}}
-        //{{$t('header.shop')}}
-        //{{$t('header.shop') }}
         $text =  str_replace("window.Vue.i18n.translate('".$key."')", $value, $text);
         $text =  str_replace("window.Vue.i18n.translate('".$key."' )", $value, $text);
         $text =  str_replace("window.Vue.i18n.translate( '".$key."' )", $value, $text);
