@@ -8,6 +8,9 @@ foreach ($files as $file) {
     if (is_dir($text)) {
          continue;
     }
+    } elseif ($text == "." && $text == "..") {
+        continue;
+    } 
     $text = file_get_contents($file);
     foreach ($translates as $key=>$value) {
         $text =  str_replace("window.Vue.i18n.translate('".$key."')", $value, $text);
@@ -34,9 +37,9 @@ foreach ($files as $file) {
         $text =  str_replace('_vm._s(_vm.$t(\''.$key.'\'))', $value, $text);
         $text =  str_replace('_vm._s(_vm.$t("'.$key.'"))', $value, $text);
     }
-    if (!is_dir($text)) {
-         file_put_contents($file,$text);
-    }
+    
+    file_put_contents($file,$text);
+    
 }
 
 function getDirContents($dir, &$results = array()) {
