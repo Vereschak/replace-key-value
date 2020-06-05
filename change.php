@@ -34,7 +34,7 @@ foreach ($files as $file) {
     file_put_contents($file,$text);
 }
 
-function getDirContents($dir, &$results = array(), $extension = ['js','map']) {
+function getDirContents($dir, &$results = array()) {
     $files = scandir($dir);
 
     foreach ($files as $key => $value) {
