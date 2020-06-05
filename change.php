@@ -4,7 +4,14 @@
 
 $files = getDirContents('./static/');
 $translates = json_decode(file_get_contents($argv[1]),true);
+$count = count($files);
+$i = 0;
 foreach ($files as $file) {
+    $i++;
+    echo ".";
+    if($i%30==0){
+        echo "\n ".round($i/$count*100,2)." \n";
+    }
     if (is_dir($file)) {
          continue;
     }
