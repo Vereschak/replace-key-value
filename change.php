@@ -20,22 +20,22 @@ foreach ($files as $file) {
     } 
     $text = file_get_contents($file);
     foreach ($translates as $key=>$value) {
-        $text =  str_replace("window.Vue.i18n.translate('".$key."')", "'".$value."'", $text);
-        $text =  str_replace("window.Vue.i18n.translate('".$key."' )", "'".$value."'", $text);
-        $text =  str_replace("window.Vue.i18n.translate( '".$key."' )", "'".$value."'", $text);
-        $text =  str_replace("window.Vue.i18n.translate( '".$key."')", "'".$value."'", $text);
-        $text =  str_replace('_vm._s(_vm.$t(\''.$key.'\')', "'".$value."'", $text);
+        $text =  str_replace("window.Vue.i18n.translate('".$key."')", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate('".$key."' )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( '".$key."' )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( '".$key."')", "\"".$value."\"", $text);
+        
         $text =  str_replace('{{$t(\''.$key.'\')}}', $value, $text);
         $text =  str_replace('{{$t(\''.$key.'\') }}', $value, $text);
         $text =  str_replace('{{ $t(\''.$key.'\') }}', $value, $text);
         $text =  str_replace('{{ $t(\''.$key.'\')}}', $value, $text);
         
         
-        $text =  str_replace("window.Vue.i18n.translate(\"".$key."\")", "'".$value."'", $text);
-        $text =  str_replace("window.Vue.i18n.translate(\"".$key."\" )", "'".$value."'", $text);
-        $text =  str_replace("window.Vue.i18n.translate( \"".$key."\" )", "'".$value."'", $text);
-        $text =  str_replace("window.Vue.i18n.translate( \"".$key."\")", "'".$value, $text);
-        $text =  str_replace('_vm._s(_vm.$t("'.$key.'")', "'".$value."'", $text);
+        $text =  str_replace("window.Vue.i18n.translate(\"".$key."\")", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate(\"".$key."\" )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( \"".$key."\" )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( \"".$key."\")", "\"".$value."\"", $text);
+  
         $text =  str_replace('{{$t("'.$key.'")}}', $value, $text);
         $text =  str_replace('{{$t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
