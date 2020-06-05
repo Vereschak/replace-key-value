@@ -5,10 +5,10 @@
 $files = getDirContents('./static/');
 $translates = json_decode(file_get_contents($argv[1]),true);
 foreach ($files as $file) {
-    if (is_dir($text)) {
+    if (is_dir($file)) {
          continue;
     }
-    else if ($text == "." && $text == "..") {
+    else if ($file == "." && $file == "..") {
         continue;
     } 
     $text = file_get_contents($file);
