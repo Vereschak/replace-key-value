@@ -5,6 +5,9 @@
 $files = getDirContents('./static/');
 $translates = json_decode(file_get_contents($argv[1]),true);
 foreach ($files as $file) {
+    if (is_dir($text)) {
+         continue;
+    }
     $text = file_get_contents($file);
     foreach ($translates as $key=>$value) {
         $text =  str_replace("window.Vue.i18n.translate('".$key."')", $value, $text);
@@ -31,7 +34,9 @@ foreach ($files as $file) {
         $text =  str_replace('_vm._s(_vm.$t(\''.$key.'\'))', $value, $text);
         $text =  str_replace('_vm._s(_vm.$t("'.$key.'"))', $value, $text);
     }
-    file_put_contents($file,$text);
+    if (!is_dir($text)) {
+         file_put_contents($file,$text);
+    }
 }
 
 function getDirContents($dir, &$results = array()) {
