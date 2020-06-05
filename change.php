@@ -33,9 +33,7 @@ foreach ($files as $file) {
         $text =  str_replace('{{$t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'")}}', $value, $text);
-        
-        $text =  str_replace('_vm._s(_vm.$t(\''.$key.'\'))', $value, $text);
-        $text =  str_replace('_vm._s(_vm.$t("'.$key.'"))', $value, $text);
+       
     }
     
     file_put_contents($file,$text);
