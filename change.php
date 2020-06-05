@@ -39,13 +39,12 @@ function getDirContents($dir, &$results = array(), $extension = ['js','map']) {
 
     foreach ($files as $key => $value) {
         $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
-        if (!is_dir($path) && in_array(pathinfo($path)['extension'],$extension)) {
+        if (!is_dir($path)) {
             $results[] = $path;
         } else if ($value != "." && $value != "..") {
             getDirContents($path, $results);
-            if(in_array(pathinfo($path)['extension'],$extension)){
-                $results[] = $path;
-            }
+             $results[] = $path;
+            
         }
     }
 
