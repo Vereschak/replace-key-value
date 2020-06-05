@@ -2,7 +2,7 @@
 
 
 
-$files = getDirContents('./');
+$files = getDirContents('./static/');
 $translates = json_decode(file_get_contents($argv[1]),true);
 foreach ($files as $file) {
     $text = file_get_contents($file);
