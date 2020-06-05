@@ -8,7 +8,7 @@ foreach ($files as $file) {
     if (is_dir($text)) {
          continue;
     }
-    } elseif ($text == "." && $text == "..") {
+    } else if ($text == "." && $text == "..") {
         continue;
     } 
     $text = file_get_contents($file);
