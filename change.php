@@ -2,7 +2,7 @@
 
 
 
-$files = getDirContents('./static/');
+$files = getDirContents('./');
 $translates = json_decode(file_get_contents($argv[1]),true);
 $count = count($files);
 $i = 0;
