@@ -16,7 +16,6 @@ foreach ($files as $file) {
         $text =  str_replace('{{$t(\''.$key.'\') }}', $value, $text);
         $text =  str_replace('{{ $t(\''.$key.'\') }}', $value, $text);
         $text =  str_replace('{{ $t(\''.$key.'\')}}', $value, $text);
-        $text =  str_replace($key, $value, $text);
         
         
         $text =  str_replace("window.Vue.i18n.translate(\"".$key."\")", $value, $text);
@@ -28,10 +27,11 @@ foreach ($files as $file) {
         $text =  str_replace('{{$t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'")}}', $value, $text);
-        $text =  str_replace($key, $value, $text);
         
-        file_put_contents($file,$text);
+        $text =  str_replace('_vm._s(_vm.$t(\''.$key.'\'))', $value, $text);
+        $text =  str_replace('_vm._s(_vm.$t("'.$key.'"))', $value, $text);
     }
+    file_put_contents($file,$text);
 }
 
 function getDirContents($dir, &$results = array(), $extension = ['js','map']) {
