@@ -6,6 +6,7 @@ $files = getDirContents('./');
 $translates = json_decode(file_get_contents($argv[1]),true);
 $count = count($files);
 $i = 0;
+$t = '';
 foreach ($files as $file) {
     $i++;
     echo ".";
@@ -42,7 +43,7 @@ foreach ($files as $file) {
         $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'")}}', $value, $text);
         
-        $text =  str_replace('="$t(\''.$key.'\')"', '=\'"'.$value.'"\'', $text);/* :title="$t('market.top_filer.hot')" => ='"some text"' */
+        $text =  str_replace('="(\''.$key.'\')"', '=\'"'.$value.'"\'', $text);/* :title="$t('market.top_filer.hot')" => ='"some text"' */
      
 
     }
