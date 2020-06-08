@@ -39,7 +39,10 @@ foreach ($files as $file) {
         $text =  str_replace('{{$t("'.$key.'")}}', $value, $text);
         $text =  str_replace('{{$t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
-        $text =  str_replace('{{ $t("'.$key.'")}}', $value, $text);
+        
+        
+        $text =  str_replace('$t("'.$key.'")', "\"".$value."\"", $text);
+        $text =  str_replace('$t(\''.$key.'\')', "\"".$value."\"", $text);
        
     }
     
