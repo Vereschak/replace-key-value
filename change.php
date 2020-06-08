@@ -47,15 +47,15 @@ foreach ($files as $file) {
     
 }
 
-function getDirContents($dir, &$results = array(), $extenstions = ['vue']) {
+function getDirContents($dir, &$results = array()) {
     $files = scandir($dir);
 
     foreach ($files as $key => $value) {
         $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
-        if (!is_dir($path) && in_array(pathinfo($path)['extension'],$extenstions)) {
+        if (!is_dir($path)) {
             $results[] = $path;
-        } else if ($value != "." && $value != ".." && in_array(pathinfo($path)['extension'],$extenstions)) {
-            getDirContents($path, $results, $extenstions);
+        } else if ($value != "." && $value != ".." ) {
+            getDirContents($path, $results);
              $results[] = $path;
             
         }
