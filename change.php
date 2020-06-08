@@ -21,7 +21,28 @@ foreach ($files as $file) {
     $text = file_get_contents($file);
     foreach ($translates as $key=>$value) {
 
-        $text =  preg_replace("|\{\{\n|", "{{", $text);
+          $text =  str_replace("window.Vue.i18n.translate('".$key."')", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate('".$key."' )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( '".$key."' )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( '".$key."')", "\"".$value."\"", $text);
+        
+        $text =  str_replace('{{$t(\''.$key.'\')}}', $value, $text);
+        $text =  str_replace('{{$t(\''.$key.'\') }}', $value, $text);
+        $text =  str_replace('{{ $t(\''.$key.'\') }}', $value, $text);
+        $text =  str_replace('{{ $t(\''.$key.'\')}}', $value, $text);
+        
+        
+        $text =  str_replace("window.Vue.i18n.translate(\"".$key."\")", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate(\"".$key."\" )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( \"".$key."\" )", "\"".$value."\"", $text);
+        $text =  str_replace("window.Vue.i18n.translate( \"".$key."\")", "\"".$value."\"", $text);
+  
+        $text =  str_replace('{{$t("'.$key.'")}}', $value, $text);
+        $text =  str_replace('{{$t("'.$key.'") }}', $value, $text);
+        $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
+        $text =  str_replace('{{ $t("'.$key.'")}}', $value, $text);
+        
+       /* $text =  preg_replace("|\{\{\n|", "{{", $text);
         $text =  preg_replace("|\n\}\}|", "}}", $text);
         $text =  preg_replace('|\{\{\s{2}\$t|', '{{$t', $text);
         $text =  preg_replace('|\{\{\s+\$t|', '{{$t', $text);
@@ -45,7 +66,7 @@ foreach ($files as $file) {
   
         $text =  str_replace('{{$t("'.$key.'")}}', $value, $text);
         $text =  str_replace('{{$t("'.$key.'") }}', $value, $text);
-        $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
+        $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);*/
 
 //         $text =  str_replace('="$t("'.$key.'")', "=\"".$value."\"", $text);
 //         $text =  str_replace('=\'$t(\''.$key.'\')\'', "=\"".$value."\"", $text);
