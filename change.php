@@ -26,23 +26,29 @@ foreach ($files as $file) {
         $text =  preg_replace('|\{\{\s{2}\$t|', '{{$t', $text);
         $text =  preg_replace('|\{\{\s+\$t|', '{{$t', $text);
         $text =  preg_replace('|\)s+\}\}|', ')}}', $text);
-  
+        
         $text =  str_replace("window.Vue.i18n.translate('".$key."')", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate('".$key."' )", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate( '".$key."' )", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate( '".$key."')", "\"".$value."\"", $text);
-
+        
         $text =  str_replace('{{$t(\''.$key.'\')}}', $value, $text);
+        $text =  str_replace('{{$t(\''.$key.'\') }}', $value, $text);
+        $text =  str_replace('{{ $t(\''.$key.'\') }}', $value, $text);
+        $text =  str_replace('{{ $t(\''.$key.'\')}}', $value, $text);
+        
         
         $text =  str_replace("window.Vue.i18n.translate(\"".$key."\")", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate(\"".$key."\" )", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate( \"".$key."\" )", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate( \"".$key."\")", "\"".$value."\"", $text);
-
+  
         $text =  str_replace('{{$t("'.$key.'")}}', $value, $text);
+        $text =  str_replace('{{$t("'.$key.'") }}', $value, $text);
+        $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
 
-        $text =  str_replace('="$t("'.$key.'")', "=\"".$value."\"", $text);
-        $text =  str_replace('=\'$t(\''.$key.'\')\'', "=\"".$value."\"", $text);
+//         $text =  str_replace('="$t("'.$key.'")', "=\"".$value."\"", $text);
+//         $text =  str_replace('=\'$t(\''.$key.'\')\'', "=\"".$value."\"", $text);
 
     }
 
