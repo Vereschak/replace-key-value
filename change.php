@@ -42,7 +42,7 @@ foreach ($files as $file) {
         $text =  str_replace('{{ $t("'.$key.'") }}', $value, $text);
         $text =  str_replace('{{ $t("'.$key.'")}}', $value, $text);
         
-        $text =  str_replace('="$t(\'.'.$key.'.\')"', '=\'"'.$value.'"\'', $text);/* :title="$t('market.top_filer.hot')" => ='"some text"' */
+        $text =  str_replace('="$t(\''.$key.'\')"', '=\'"'.$value.'"\'', $text);/* :title="$t('market.top_filer.hot')" => ='"some text"' */
      
 
     }
