@@ -49,7 +49,7 @@ foreach ($files as $file) {
         $text =  str_replace('="$t(\''.$key.'\')', '="\''.addslashes($value).'\'', $text);/*v-text="$t('market.top_filer.hot') + ' | ' =>   v-text="ssssssss" + ' | '"*/ 
         $text =  str_replace('$t(\''.$key.'\')', '\''.addslashes($value).'\'', $text);
         $text =  str_replace('$t("'.$key.'")', '"'.addslashes($value).'"', $text);
-        if($initText==$text && !in_array($key,$uniqKeys)){
+        if($initText!=$text && !in_array($key,$uniqKeys)){
              $uniqKeys[] = $key;
         }
     }
@@ -59,7 +59,7 @@ foreach ($files as $file) {
 
 }
 
- file_put_contents('./keys.json',json_encode($uniqKeys));
+echo json_encode($uniqKeys);
 
 function getDirContents($dir, &$results = array()) {
     $files = scandir($dir);
