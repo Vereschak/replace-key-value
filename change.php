@@ -6,7 +6,6 @@ $files = getDirContents('./');
 $translates = json_decode(file_get_contents($argv[1]),true);
 $count = count($files);
 $i = 0;
-$uniqKeys = [];
 
 foreach ($files as $file) {
     $i++;
@@ -22,7 +21,6 @@ foreach ($files as $file) {
     }
     $text = file_get_contents($file);
     foreach ($translates as $key=>$value) {
-        $initText =$text;
         $text =  str_replace("window.Vue.i18n.translate('".$key."')", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate('".$key."' )", "\"".$value."\"", $text);
         $text =  str_replace("window.Vue.i18n.translate( '".$key."' )", "\"".$value."\"", $text);
@@ -49,17 +47,13 @@ foreach ($files as $file) {
         $text =  str_replace('="$t(\''.$key.'\')', '="\''.addslashes($value).'\'', $text);/*v-text="$t('market.top_filer.hot') + ' | ' =>   v-text="ssssssss" + ' | '"*/ 
         $text =  str_replace('$t(\''.$key.'\')', '\''.addslashes($value).'\'', $text);
         $text =  str_replace('$t("'.$key.'")', '"'.addslashes($value).'"', $text);
-        if($initText!=$text && !in_array($key,$uniqKeys)){
-             $uniqKeys[] = $key;
-        }
+      
     }
 
     file_put_contents($file,$text);
-   
-
 }
 
-echo json_encode($uniqKeys);
+
 
 function getDirContents($dir, &$results = array()) {
     $files = scandir($dir);
